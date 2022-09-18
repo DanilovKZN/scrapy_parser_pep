@@ -1,7 +1,6 @@
 from urllib.parse import urljoin
 
 import scrapy
-from scrapy.exceptions import DropItem
 
 from pep_parse.items import PepParseItem
 
@@ -49,9 +48,9 @@ class PepSpider(scrapy.Spider):
             if status in dt_text or status in dd_text:
                 return_status = status
                 break
-        date_to_output =  {
+        date_to_output = {
             'number': name_pip_list[1],
-            'name': ' '.join(map(str,name_pip_list[3:])),
+            'name': ' '.join(map(str, name_pip_list[3:])),
             'status': return_status
         }
         yield PepParseItem(date_to_output)

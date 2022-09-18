@@ -2,7 +2,6 @@ import datetime as dt
 from collections import defaultdict
 from pathlib import Path
 
-from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
 
 
@@ -20,7 +19,8 @@ STATUSES = {
 
 DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
 
-BASE_DIR = Path(__file__).parent # Для прохождения теста
+# Для прохождения теста
+BASE_DIR = Path(__file__).parent
 
 
 class PepParsePipeline:
@@ -50,10 +50,11 @@ class PepParsePipeline:
         # Для тестов через BASE_DIR c созданием папки в pep_parse
         with open(
             BASE_DIR / f'results/status_summary_{now_formatted}.csv',
-            mode='w', encoding='utf-8') as f:
+            mode='w', encoding='utf-8'
+        ) as f:
             f.write('Статус,Количество\n')
 
-        # Рабочий вариант в папку results  
+        # Рабочий вариант в папку results
         # with open(
         #     f'results/status_summary_{now_formatted}.csv',
         #     mode='w', encoding='utf-8') as f:
